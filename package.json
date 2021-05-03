@@ -1,0 +1,63 @@
+{
+  "author": "Mir Nawaz <inbox.mirnawaz@gmail.com>",
+  "license": "ISC",
+  "private": true,
+  "name": "nodejs-docker",
+  "version": "0.1.0",
+  "description": "nodejs docker",
+  "main": "app.js",
+  "engines": {
+    "node": ">=15.0.0 <16.0.0"
+  },
+  "scripts": {
+    "test": "jest --config=jest.json --detectOpenHandles",
+    "test:api": "jest --config=jest-api.json --detectOpenHandles",
+    "dev": "nodemon -r esm src/app.js",
+    "app": "PROCESS_ENV=local node -r esm src/app.js",
+    "docker": "PROCESS_ENV=docker node -r esm src/app.js",
+    "lint": "eslint . --cache --ignore-path .gitignore"
+  },
+  "bugs": "https://github.com/user/repo/issues",
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "redis",
+    "docker-compose"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn unit"
+    }
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-proposal-export-default-from": "^7.12.13",
+    "@babel/preset-env": "^7.14.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.10.1",
+    "helmet": "^4.5.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.12.7",
+    "redis": "^3.1.2",
+    "request": "^2.88.2",
+    "simple-node-logger": "^18.12.24"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.13.14",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "esm": "^3.2.25",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "jest-clean-console-reporter": "^0.3.0",
+    "jest-json-schema": "^5.0.0",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
+  }
+}

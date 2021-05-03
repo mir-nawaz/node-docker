@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "cd7f01da-2a04-47a6-b482-cfd14e5d7a60",
+		"name": "nodejs-docker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Project List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/project?limit=10&skip=0",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"project"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "skip",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Project ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"visable node.js\",\n    \"owner\": \"a8d4ae84-79a6-4ec8-ba03-1a5fa45107be\",\n    \"state\": \"planned\",\n    \"participants\": [{\n        \"id\": \"d44bcda5-5918-47b8-a644-8f030ae875b3\",\n        \"estimate\" : 30,\n        \"status\": 0\n    },{\n        \"id\": \"47f19125-fb91-4ad6-b4e9-320d59e01f23\",\n        \"estimate\" : 30,\n        \"status\": 0\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/project",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"project"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "skip",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Project",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"visable node.js demo\",\n    \"owner\": \"a8d4ae84-79a6-4ec8-ba03-1a5fa45107be\",\n    \"state\": \"planned\",\n    \"participants\": [{\n        \"id\": \"d44bcda5-5918-47b8-a644-8f030ae875b3\",\n        \"estimate\" : 10,\n        \"status\": 0\n    },{\n        \"id\": \"47f19125-fb91-4ad6-b4e9-320d59e01f23\",\n        \"estimate\" : 30,\n        \"status\": 0\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/project/6090393aafc8c898316b69f4",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"project",
+						"6090393aafc8c898316b69f4"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "skip",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee  List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/employee",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"employee"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "skip",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Employee in redis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/employee/refresh",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"employee",
+						"refresh"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "skip",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee List from vercel.app",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://employees-api.vercel.app/api/employees",
+					"protocol": "https",
+					"host": [
+						"employees-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee Details from vercel.app",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://employees-api.vercel.app/api/employees/3df4fdbc-aa1a-4605-bf55-4aa27643f964",
+					"protocol": "https",
+					"host": [
+						"employees-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"employees",
+						"3df4fdbc-aa1a-4605-bf55-4aa27643f964"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

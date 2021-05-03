@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: web_api
+    depends_on:
+      - redis
+      - mongodb
+    ports:
+      - "8080:8080"
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    ports:
+      - 6378:6379
+  mongodb:
+    image: "mongo:latest"
+    container_name: mongodb
+    ports:
+      - 27018:27017

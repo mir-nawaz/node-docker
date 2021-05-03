@@ -1,0 +1,17 @@
+{
+  "collectCoverage": true,
+  "coverageDirectory": "./coverage",
+  "collectCoverageFrom": [
+    "src/**/*.js",
+    "!**/node_modules/**"
+  ],
+  "notify": true,
+  "setupFilesAfterEnv": ["./test/setup.js"],
+  "roots": [
+    "test/"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "."
+  ]
+}

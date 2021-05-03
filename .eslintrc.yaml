@@ -1,0 +1,55 @@
+env:
+  es6: true
+  node: true
+
+extends:
+  - 'airbnb-base'
+
+globals:
+  assert: true
+  expect: true
+  document: true
+
+parser: 'babel-eslint'
+
+parserOptions:
+  ecmaVersion: 7
+
+root: true
+
+rules:
+  comma-dangle:
+    - 'error'
+    - arrays: 'always-multiline'
+      objects: 'always-multiline'
+      imports: 'never'
+      exports: 'never'
+      functions: 'ignore'
+  global-require: 'off'
+  import/no-extraneous-dependencies: 0
+  indent:
+    - 'error'
+    - 2
+    - SwitchCase: 1
+  max-len:
+    - 'error'
+    - 100
+    - ignorePattern: '\s*\/\^(.*)\$\/,$'
+  require-jsdoc:
+    - 'error'
+    - require:
+        FunctionDeclaration: true
+        MethodDefinition: true
+        ClassDeclaration: true
+  strict: 'off'
+  class-methods-use-this: 'off'
+  valid-jsdoc:
+    - 'error'
+    - requireReturn: false
+      matchDescription: '.+'
+  no-restricted-syntax:
+    - 'warn'
+  semi:
+    - 'error'
+  no-extra-semi:
+    - 'error'

@@ -1,0 +1,15 @@
+{
+  "testEnvironment": "node",
+  "notify": true,
+  "setupFilesAfterEnv": ["./test-api/setup.js"],
+  "roots": [
+    "test-api"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "."
+  ],
+  "reporters": [
+    "jest-clean-console-reporter"
+  ]
+}
