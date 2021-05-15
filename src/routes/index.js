@@ -3,6 +3,8 @@ import project from './project';
 import employee from './employee';
 
 export default (app) => {
+  app.get('/healthz', (req, res) => res.send('Welcome to the API.'));
+
   const router = express.Router();
 
   router.get('/', (req, res) => {

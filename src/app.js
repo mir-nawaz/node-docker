@@ -10,6 +10,7 @@ import config from './config';
 import Redis from './db/redis';
 import employee from './controllers/employee';
 import log from './util/logger';
+import Control from './util/control';
 
 const app = express();
 
@@ -29,15 +30,13 @@ const app = express();
     if (!redis.connected) throw new Error('Redis not connected');
     await employee.refreshRedis();
 
-    app.get('/', (req, res) => {
-      res.send('Welcome to the API.');
-    });
-
     routes(app);
 
-    app.listen(config.port, () => {
-      log.info(`Server is running on port ${config.port}`);
+    const server = app.listen(config.port, () => {
+      log.info(`Server is running on port ${config.port}, process ${config.env()}`);
     });
+
+    new Control(server); // eslint-disable-line
   } catch (e) {
     log.error(e);
     // Deal with the fact the chain failed

@@ -36,7 +36,7 @@ class ProjectCtl {
       .select('-__v -createdAt -updatedAt');
 
     log.info('project - search complete');
-    respond.success(res, messages.PROJECT_CREATED, {
+    respond.success(res, messages.PROJECT_LIST, {
       total, skip, limit, projects,
     });
   }

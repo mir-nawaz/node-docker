@@ -22,6 +22,10 @@ export default {
     code: 200,
     message: 'Project created',
   },
+  PROJECT_LIST: {
+    code: 200,
+    message: 'Projects list',
+  },
   PROJECT_UPDATED: {
     code: 200,
     message: 'Project updated',

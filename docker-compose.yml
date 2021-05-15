@@ -2,20 +2,46 @@ version: "3.9"
 
 services:
   api:
-    build: .
+    build:
+      context: .
+      args:
+        - NODE_ENV=production
     container_name: web_api
     depends_on:
-      - redis
-      - mongodb
+      redis:
+        condition: service_healthy
     ports:
       - "8080:8080"
+    volumes:
+      - .:/opt/server/app:delegated
+      - ./package.json:/opt/server/package.json
+      - ./yarn.lock:/opt/server/yarn.lock
+      - notused:/opt/server/app/node_modules
   redis:
     image: "redis:alpine"
     container_name: redis
     ports:
       - 6378:6379
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      start_period: 10s
+      timeout: 10s
+      retries: 3
   mongodb:
     image: "mongo:latest"
     container_name: mongodb
     ports:
       - 27018:27017
+    healthcheck:
+      test: "[ `echo 'db.runCommand(\"ping\").ok' | mongo localhost/app_db --quiet` ] && echo 0 || echo 1"
+      interval: 10s
+      start_period: 10s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  notused:

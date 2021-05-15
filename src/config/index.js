@@ -7,7 +7,7 @@ const config = {
    * load config
    */
   connect: () => {
-    const env = process.env.PROCESS_ENV;
+    const env = config.env();
     const path = env !== undefined
       ? `.${env}.env`
       : '.env';
@@ -75,6 +75,11 @@ const config = {
     resave: true,
     saveUninitialized: true,
   }),
+  /**
+   * return env var
+   * @returns {string} env env
+   */
+  env: () => process.env.NODE_ENV || 'development',
 };
 
 export default config;
